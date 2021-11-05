@@ -35,6 +35,14 @@ namespace KPMG.API.Satelite.Controllers
             ct.Add(value);
         }
 
+        [HttpPost]
+        public void config(int qtd)
+        {
+            Context ct = new Context();
+
+            ct.Limit(qtd);
+        }
+
         //// PUT api/<GameResult>/5
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] string value)

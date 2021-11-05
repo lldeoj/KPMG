@@ -27,7 +27,7 @@ namespace KPMG.API.Satelite.Data
             Lst_GR.Add(gr);
             if(Lst_GR.Count >= limit)
             {
-
+                call_API();
             }
             return true;
         }
@@ -41,7 +41,7 @@ namespace KPMG.API.Satelite.Data
             return true;
         }
 
-        private async bool call_API()
+        private async void call_API()
         {
             HttpClient client = new HttpClient();
 
@@ -49,7 +49,7 @@ namespace KPMG.API.Satelite.Data
 
             foreach (var item in Lst_GR)
             {
-                HttpResponseMessage response = await client.PostAsJsonAsync("api/GetGameResult", item);
+                HttpResponseMessage response = await client.PostAsJsonAsync("https://localhost:44361/api/GetGameResult", item);
 
                 if(!response.IsSuccessStatusCode)
                 {
@@ -62,10 +62,6 @@ namespace KPMG.API.Satelite.Data
             {
                 Lst_GR.Add(item);
             }
-
-
-            // return URI of the created resource.
-            return true;
         }
 
 
